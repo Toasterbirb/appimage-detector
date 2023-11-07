@@ -14,5 +14,5 @@ FILE_RESULT=$(file "$FILE" | grep "ELF")
 [ -z "$FILE_RESULT" ] && _notAppImage
 
 # Run strings on the binary
-RESULT=$(strings -d "$FILE" | grep "AppImage")
+RESULT=$(strings -d "$FILE" | grep -m 1 "AppImage")
 [ -z "$RESULT" ] && _notAppImage || echo "$FILE is an AppImage"
